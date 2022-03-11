@@ -1,8 +1,10 @@
-import javax.swing.*;
-import java.awt.image.*;
-import java.awt.geom.*;
-import javax.imageio.*;
-import java.io.*;
+package images;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * This class represents a graphical picture. Once an instance of this is created, it can

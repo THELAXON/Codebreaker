@@ -12,20 +12,20 @@ public class Codebreaker implements ActionListener
     public Codebreaker()
     {
         
-        button.setBounds(0,0,100,100);
+        button.setBounds(0,0,300,100);
         button.addActionListener(this);
         button.setFocusable(false);
-        button1.setBounds(100,0,100,100);
+        button1.setBounds(0,100,300,100);
         button1.addActionListener(this);
         button1.setFocusable(false);
-        button2.setBounds(200,0,100,100);
+        button2.setBounds(0,200,300,100);
         button2.addActionListener(this);
         button2.setFocusable(false);
         panel.add(button);
         panel.add(button1);
         panel.add(button2);
 
-        frame.setSize(300, 100);
+        frame.setSize(300, 330);
         frame.setContentPane(panel);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
