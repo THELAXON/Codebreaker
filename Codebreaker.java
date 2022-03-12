@@ -4,30 +4,35 @@ import java.awt.event.ActionListener;
 
 public class Codebreaker implements ActionListener
 {
-    private JFrame frame = new JFrame("Code Breaker");
-    private JPanel panel = new JPanel();
-    private static JButton button = new JButton("Easy");
-    private static JButton button1 = new JButton("Medium");
-    private static JButton button2 = new JButton("Hard");
+    private static JFrame frame = new JFrame("Code Breaker");
+    private static JPanel panel = new JPanel();
+    private static JLabel titles = new JLabel("Welcome to code Breaker");
+    private static JButton easy = new JButton("Easy");
+    private static JButton medium = new JButton("Medium");
+    private static JButton hard = new JButton("Hard");
     public Codebreaker()
     {
         
-        button.setBounds(0,0,300,100);
-        button.addActionListener(this);
-        button.setFocusable(false);
-        button1.setBounds(0,100,300,100);
-        button1.addActionListener(this);
-        button1.setFocusable(false);
-        button2.setBounds(0,200,300,100);
-        button2.addActionListener(this);
-        button2.setFocusable(false);
-        panel.add(button);
-        panel.add(button1);
-        panel.add(button2);
+        easy.setBounds(0,20,285,100);
+        easy.addActionListener(this);
+        easy.setFocusable(false);
+        medium.setBounds(0,120,285,100);
+        medium.addActionListener(this);
+        medium.setFocusable(false);
+        hard.setBounds(0,220,285,100);
+        hard.addActionListener(this);
+        hard.setFocusable(false);
+        panel.add(easy);
+        panel.add(medium);
+        panel.add(hard);
 
-        frame.setSize(300, 330);
+        titles.setBounds(70,0,150,20);
+        panel.add(titles);
+
+        frame.setSize(300,350);
         frame.setContentPane(panel);
         frame.setLayout(null);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
@@ -35,15 +40,15 @@ public class Codebreaker implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        if(e.getSource()== button)
+        if(e.getSource()== easy)
         {
             easy();
         }
-        if(e.getSource()== button1)
+        if(e.getSource()== medium)
         {
             medium();
         }
-        if(e.getSource()== button2)
+        if(e.getSource()== hard)
         {
             hard();
         }
@@ -54,30 +59,18 @@ public class Codebreaker implements ActionListener
 
     public static void easy()
     {
-           // button.setVisible(false);
-            button1.setVisible(false);
-            button2.setVisible(false);
-            JLabel label = new JLabel();
-            label.setText("welcome to easy level");
-            label.setVisible(true);
-            
+            panel.setVisible(false);
+            //easy.setVisible(false);
+           // medium.setVisible(false);
+           // hard.setVisible(false);
+           EasyLevel easylevel = new EasyLevel();
     }
 
     public static void medium()
-    {
-            button.setVisible(false);
-            button1.setVisible(false);
-            button2.setVisible(false);
-
-            
+    {     
     }
 
     public static void hard()
-    {
-            button.setVisible(false);
-            button1.setVisible(false);
-            button2.setVisible(false);
-
-            
+    {   
     }
 }
