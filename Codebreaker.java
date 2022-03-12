@@ -6,9 +6,9 @@ public class Codebreaker implements ActionListener
 {
     private JFrame frame = new JFrame("Code Breaker");
     private JPanel panel = new JPanel();
-    private JButton button = new JButton("Easy");
-    private JButton button1 = new JButton("Medium");
-    private JButton button2 = new JButton("Hard");
+    private static JButton button = new JButton("Easy");
+    private static JButton button1 = new JButton("Medium");
+    private static JButton button2 = new JButton("Hard");
     public Codebreaker()
     {
         
@@ -33,17 +33,51 @@ public class Codebreaker implements ActionListener
 
     }
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()== button){
-            System.out.println("hello");
+    public void actionPerformed(ActionEvent e) 
+    {
+        if(e.getSource()== button)
+        {
+            easy();
         }
-        if(e.getSource()== button1){
-            System.out.println("it's");
+        if(e.getSource()== button1)
+        {
+            medium();
         }
-        if(e.getSource()== button2){
-            System.out.println("me");
+        if(e.getSource()== button2)
+        {
+            hard();
         }
         
         
     } 
+
+
+    public static void easy()
+    {
+           // button.setVisible(false);
+            button1.setVisible(false);
+            button2.setVisible(false);
+            JLabel label = new JLabel();
+            label.setText("welcome to easy level");
+            label.setVisible(true);
+            
+    }
+
+    public static void medium()
+    {
+            button.setVisible(false);
+            button1.setVisible(false);
+            button2.setVisible(false);
+
+            
+    }
+
+    public static void hard()
+    {
+            button.setVisible(false);
+            button1.setVisible(false);
+            button2.setVisible(false);
+
+            
+    }
 }
