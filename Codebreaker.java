@@ -64,11 +64,11 @@ public class Codebreaker implements ActionListener                          // T
 
     public static void medium()
     {    
-           MediumLevel easylevel = new MediumLevel(); 
+           MediumLevel mediumlevel = new MediumLevel(); 
     }
 
     public static void hard()
     {   
-           HardLevel easylevel = new HardLevel();
+           HardLevel hardlevel = new HardLevel();
     }
 }

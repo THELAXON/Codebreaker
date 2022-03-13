@@ -14,6 +14,8 @@ public class Picture extends ImageIcon
 {
     private String filename;
 
+    
+
     /**
      * Constructor. Creates a new instance of the Picture class based on an image in the given filename.
      *
