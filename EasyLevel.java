@@ -9,7 +9,7 @@ public class EasyLevel implements ActionListener
     //private static int codemaker[];
     //private static int playerchoice[];
     private JFrame frame = new JFrame("Code Breaker Game");
-    private JPanel panel = new JPanel();
+    private static JPanel panel = new JPanel();
     private static JButton buttons[] = new JButton[7];
     private static JLabel labels[] = new JLabel[24];
     private static ImageIcon icons[] = new ImageIcon[10];
@@ -25,7 +25,9 @@ public class EasyLevel implements ActionListener
         {
             buttons[i] = new JButton();
             buttons[i].setIcon(icons[i]);
+            buttons[i].addActionListener(this);
             buttons[i].setBounds(j,360,50,50);
+            
             panel.add(buttons[i]);
             j = j + 50;
 
@@ -44,6 +46,8 @@ public class EasyLevel implements ActionListener
             p = p - 50;
 
         }
+
+        //buttons[1].addActionListener(this);
         frame.setSize(365, 450);
         frame.setResizable(false);
         frame.setContentPane(panel);
@@ -55,16 +59,21 @@ public class EasyLevel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        if(e.getSource()== buttons[0])                                            // An if statement is used to compare what button was clicked
+        for(int j=0;j<=3;j++)
         {
-            redchange();                                                         // Goes to the function directed by the if statement
+            for(int i=0;i<=6;i++)
+            {
+                if(e.getSource()== buttons[i])                                            // An if statement is used to compare what button was clicked
+                {
+                icons[i] = new ImageIcon(String.valueOf(i)+".png");
+                //ImageIcon colour = new ImageIcon("0.png");
+                labels[j].setIcon(icons[i]);                                                        // Goes to the function directed by the if statement
+                }
+            }
         }
     }
-    public static void redchange()
-    {
-        ImageIcon redicon = new ImageIcon("0.png");
-        labels[0].setIcon(redicon);
-    }
+    
+    
     /*public static void pattern()
     {
         Random num = new Random();
