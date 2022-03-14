@@ -59,18 +59,14 @@ public class EasyLevel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        for(int j=0;j<=3;j++)
-        {
             for(int i=0;i<=6;i++)
             {
                 if(e.getSource()== buttons[i])                                            // An if statement is used to compare what button was clicked
                 {
-                icons[i] = new ImageIcon(String.valueOf(i)+".png");
-                //ImageIcon colour = new ImageIcon("0.png");
-                labels[j].setIcon(icons[i]);                                                        // Goes to the function directed by the if statement
+                labels[i].setIcon(icons[i]);                                                        // Goes to the function directed by the if statement
                 }
             }
-        }
+
     }
     
     
