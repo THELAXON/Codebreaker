@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.util.Random;
 
-public class EasyLevel implements ActionListener
+public class Level implements ActionListener
 {
     //private static int codemaker[];
     //private static int playerchoice[];
@@ -14,12 +14,11 @@ public class EasyLevel implements ActionListener
     private static JLabel labels[] = new JLabel[24];
     private static ImageIcon icons[] = new ImageIcon[10];
     int x=0;
-    public EasyLevel()
+    public Level()
     {
-        for(int i=0,j=0; i <=9;i++)
+        for(int i=0; i <=9;i++)
         {
-            icons[i] = new ImageIcon(String.valueOf(j)+".png");
-            j++;
+            icons[i] = new ImageIcon(String.valueOf(i)+".png");
         }
         for(int i=0,j=0; i<=6;i++)
         {
@@ -47,7 +46,6 @@ public class EasyLevel implements ActionListener
 
         }
 
-        //buttons[1].addActionListener(this);
         frame.setSize(365, 450);
         frame.setResizable(false);
         frame.setContentPane(panel);
@@ -56,19 +54,23 @@ public class EasyLevel implements ActionListener
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+    int p=0;
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-            for(int i=0;i<=6;i++)
+        for(int i=0;i<=6;i++)
+        {
+            if(e.getSource()== buttons[i])                                         
             {
-                if(e.getSource()== buttons[i])                                            // An if statement is used to compare what button was clicked
+                if(labels[p].getIcon()==icons[7])
                 {
-                labels[i].setIcon(icons[i]);                                                        // Goes to the function directed by the if statement
-                }
+                    labels[p].setIcon(buttons[i].getIcon());
+                    p++;
+                }                                             
             }
-
+        }    
     }
-    
+}
     
     /*public static void pattern()
     {
@@ -81,5 +83,4 @@ public class EasyLevel implements ActionListener
             codemaker[count]= number;
         }
     }*/
-}
  

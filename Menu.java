@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Codebreaker implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
+public class Menu implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
 {
     private static JFrame frame = new JFrame("Code Breaker");               // The exe is titled Code Breaker 
     private static JPanel panel = new JPanel();                             // A panel is made to showcase all components in it
@@ -10,7 +10,7 @@ public class Codebreaker implements ActionListener                          // T
     private static JButton easy = new JButton("Easy");                      // Button represents the level difficulty
     private static JButton medium = new JButton("Medium");                  // Button represents the level difficulty
     private static JButton hard = new JButton("Hard");                      // Button represents the level difficulty
-    public Codebreaker()
+    public Menu()
     {
         
         easy.setBounds(0,20,285,100);                                       // Chose where the buttons should be
@@ -59,16 +59,16 @@ public class Codebreaker implements ActionListener                          // T
 
     public static void easy()
     {
-           EasyLevel easylevel = new EasyLevel();
+           new Level();
     }
 
     public static void medium()
     {    
-           MediumLevel mediumlevel = new MediumLevel(); 
+            new MediumLevel(); 
     }
 
     public static void hard()
     {   
-           HardLevel hardlevel = new HardLevel();
+           new Level();
     }
 }
