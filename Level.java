@@ -2,12 +2,11 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.util.Random;
+
 
 public class Level implements ActionListener
 {
-    //private static int codemaker[];
-    //private static int playerchoice[];
+    int[] playerchoice = new int[4];
     private JFrame frame = new JFrame("Code Breaker Game");
     private static JPanel panel = new JPanel();
     private static JButton buttons[] = new JButton[7];
@@ -25,7 +24,7 @@ public class Level implements ActionListener
             buttons[i] = new JButton();
             buttons[i].setIcon(icons[i]);
             buttons[i].addActionListener(this);
-            buttons[i].setBounds(j,360,50,50);
+            buttons[i].setBounds(j,320,50,50);
             
             panel.add(buttons[i]);
             j = j + 50;
@@ -37,24 +36,25 @@ public class Level implements ActionListener
             {
                 labels[x] = new JLabel();
                 labels[x].setIcon(icons[7]);
-                labels[x].setBounds(y,310 + p,50,50);
+                labels[x].setBounds(y,255 + p,50,50);
                 panel.add(labels[x]);
-                y = y + 50;
+                y = y + 60;
                 x++;
             }
-            p = p - 50;
+            p = p - 65;
 
         }
 
-        frame.setSize(365, 450);
+        frame.setSize(367, 410);
         frame.setResizable(false);
         frame.setContentPane(panel);
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(0x996600)); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
     }
-    int p=0;
+    int p=0,k=0;
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -66,21 +66,15 @@ public class Level implements ActionListener
                 {
                     labels[p].setIcon(buttons[i].getIcon());
                     p++;
-                }                                             
+                }      
+                    k=i;                                       
             }
-        }    
+        }
+        for(int j=0;j<=3;j++)
+            {
+                playerchoice[j] = k;
+            }
     }
 }
     
-    /*public static void pattern()
-    {
-        Random num = new Random();
-        int number;
-
-        for(int count=0; count<=4; count++){
-            number = num.nextInt(4);
-
-            codemaker[count]= number;
-        }
-    }*/
  
