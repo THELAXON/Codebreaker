@@ -60,17 +60,21 @@ public class MediumLevel implements ActionListener
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+    int p =0,j=0;
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-            for(int i=0;i<=6;i++)
+        for(int i=0;i<=6;i++)
+        {
+            if(e.getSource()== buttons[i])                                         
             {
-                if(e.getSource()== buttons[i])                                            // An if statement is used to compare what button was clicked
+                if(labels[p].getIcon()==icons[7])
                 {
-                labels[i].setIcon(icons[i]);                                                        // Goes to the function directed by the if statement
-                }
+                    labels[p].setIcon(buttons[i].getIcon());
+                    p++;
+                }                                             
             }
-
+        }
     }
 }
  
