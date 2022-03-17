@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 
 public class Menu implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
 {
+    private  int length;
+    private  int rows;
     private static JFrame frame = new JFrame("Code Breaker");               // The exe is titled Code Breaker 
     private static JPanel panel = new JPanel();                             // A panel is made to showcase all components in it
     private static JLabel titles = new JLabel("Welcome to code Breaker");   // Welcomes the player to the game
@@ -36,8 +38,21 @@ public class Menu implements ActionListener                          // This is 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);               // This allows for the exe to close and not continue running when close button is inputted
         frame.setVisible(true);                                             // The frame needs to be visible so the user can see the exe window
 
+        
     }
-    @Override
+    public int getlength(){
+        return this.length;
+    }
+    public void setlength(int a){
+        this.length = a;
+    }
+    public int getrows(){
+        return this.rows;
+    }
+    public void setrows(int a){
+        this.rows = a;
+    }
+
     public void actionPerformed(ActionEvent e)                              // This function allows the program to react to input due to action listener
     {
         if(e.getSource()== easy)                                            // An if statement is used to compare what button was clicked
@@ -56,19 +71,20 @@ public class Menu implements ActionListener                          // This is 
         
     } 
 
-
-    public static void easy()
+    public void easy()
     {
            new Level();
     }
 
-    public static void medium()
+    public void medium()
     {    
-            new MediumLevel(); 
+            new MediumLevel();
     }
 
-    public static void hard()
+    public void hard()
     {   
-           new Level();
+        this.setlength(8);
+        this.setrows(6);
+        new HardLevel();
     }
 }

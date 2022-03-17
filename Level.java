@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 
 public class Level implements ActionListener
 {
-    int[] playerchoice = new int[4];
+    static int[] playerchoice = new int[4];
     private JFrame frame = new JFrame("Code Breaker Game");
     private static JPanel panel = new JPanel();
     private static JButton buttons[] = new JButton[7];
@@ -54,7 +55,7 @@ public class Level implements ActionListener
         frame.setVisible(true);
 
     }
-    int p=0,k=0;
+    int p=0,k=0,j=0;
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -66,15 +67,27 @@ public class Level implements ActionListener
                 {
                     labels[p].setIcon(buttons[i].getIcon());
                     p++;
+                    playerchoice[j]= i;
+                    j++;
+
+                    if(j==5)
+                    {
+                        for(p=0;p<3;p++)
+                        {
+                            playerchoice[p] = 0;
+                        }
+                        j=0;
+                    }
                 }      
-                    k=i;                                       
+                                                          
             }
         }
-        for(int j=0;j<=3;j++)
-            {
-                playerchoice[j] = k;
-            }
+
+            System.out.println(Arrays.toString(playerchoice));
+    }
+
+    public static int[] getplayerchoice() {
+        return playerchoice;
     }
 }
-    
  
