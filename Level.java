@@ -1,58 +1,78 @@
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-
 public class Level implements ActionListener
-{
-    static int[] playerchoice = new int[4];
-    private JFrame frame = new JFrame("Code Breaker Game");
-    private static JPanel panel = new JPanel();
-    private static JButton buttons[] = new JButton[7];
-    private static JLabel labels[] = new JLabel[24];
-    private static ImageIcon icons[] = new ImageIcon[10];
-    int x=0;
+{   
+    private static int length = CodeBreaker.getlength();
+    private static int rows = CodeBreaker.getrows();
+    private static int arraylength = CodeBreaker.getarraylength();
+    private static int[] computerchoice = Codemaker.getcodemake();
+    private JFrame frame = new JFrame("Code Breaker");          // Naming the frame
+    private static ImageIcon icons[] = new ImageIcon[10];               // Array to store image icons given
+    private static JButton buttons[] = new JButton[7];                  // Button array to keep buttons seperately
+    private static JLabel labels[] = new JLabel[42];                    // JLabel size will change to adjust the rows and length
+    private static JLabel clabels[] = new JLabel[42];
+    private static JPanel bpanel = new JPanel();                        // Button panel to hold buttons
+    private static JPanel rpanel = new JPanel();                        // Row panel to hold the empty icons
+    private static JPanel cpanel = new JPanel();
+    static int[] playerchoice = new int[arraylength];
+    
+    
     public Level()
     {
-        for(int i=0; i <=9;i++)
+        for(int i=0; i <=9;i++)                                         //Adding images to the icon array
         {
-            icons[i] = new ImageIcon(String.valueOf(i)+".png");
+            icons[i] = new ImageIcon(String.valueOf(i)+".png");  // Converts to string the number used to name file and stores it into array
         }
-        for(int i=0,j=0; i<=6;i++)
+        
+        for(int i=0;i<=(length*rows)-1;i++)
+        {
+            clabels[i] = new JLabel();
+            clabels[i].setIcon(icons[7]);
+            cpanel.add(clabels[i]);
+        }
+
+        for(int i=0;i<=(length*rows)-1;i++)
+        {
+            labels[i] = new JLabel();
+            labels[i].setIcon(icons[7]);
+            rpanel.add(labels[i]);
+        }
+
+        
+        for(int i=0;i<=6;i++)
         {
             buttons[i] = new JButton();
             buttons[i].setIcon(icons[i]);
             buttons[i].addActionListener(this);
-            buttons[i].setBounds(j,320,50,50);
-            
-            panel.add(buttons[i]);
-            j = j + 50;
-
-        }
-        for(int j=0,p=0; j<=5;j++)
-        {
-            for(int i=0,y=0; i<=3;i++)
-            {
-                labels[x] = new JLabel();
-                labels[x].setIcon(icons[7]);
-                labels[x].setBounds(y,255 + p,50,50);
-                panel.add(labels[x]);
-                y = y + 60;
-                x++;
-            }
-            p = p - 65;
-
+            bpanel.add(buttons[i]);
         }
 
-        frame.setSize(367, 410);
+
+        cpanel.setLayout(new GridLayout(rows*2,length/2,0,0));
+        cpanel.setBounds(350,20,130,450);
+        cpanel.setBackground(new Color(0x996600));
+
+        bpanel.setLayout(new GridLayout(1,7,0,0));
+        bpanel.setBounds(60,510,350,50);
+        bpanel.setBackground(new Color(0x996600));
+        rpanel.setLayout(new GridLayout(rows,length,0,30));
+        rpanel.setBounds(0,20,350,450);
+        rpanel.setBackground(new Color(0x996600));
+        frame.add(bpanel);
+        frame.add(rpanel);
+        frame.add(cpanel);
+        frame.setSize(500, 600);
         frame.setResizable(false);
-        frame.setContentPane(panel);
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(0x996600)); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
 
     }
     int p=0,k=0,j=0;
@@ -67,27 +87,39 @@ public class Level implements ActionListener
                 {
                     labels[p].setIcon(buttons[i].getIcon());
                     p++;
-                    playerchoice[j]= i;
-                    j++;
-
-                    if(j==5)
-                    {
-                        for(p=0;p<3;p++)
-                        {
-                            playerchoice[p] = 0;
-                        }
-                        j=0;
-                    }
-                }      
-                                                          
+                    k = i;
+                }                                        
             }
         }
-
-            System.out.println(Arrays.toString(playerchoice));
+            if(playerchoice[arraylength] != 0)
+            {
+                playerchoice[j]=k;
+                j++;
+            }
+                System.out.println(Arrays.toString(playerchoice));
     }
 
+    public static int getarraylength() {
+        return arraylength;
+    }
     public static int[] getplayerchoice() {
         return playerchoice;
     }
+    public void Win()
+    {
+        for(int i=0;i<Level.getplayerchoice().length;i++)
+            {
+                for(int j=0;j<computerchoice.length;j++)
+                {
+                    if(Level.getplayerchoice()[i] == computerchoice[j])
+                    {
+                        System.out.println("You won");
+                    }
+                    else{
+                        System.out.println("You wrong");
+                    }
+                }
+            }
+        }
 }
  

@@ -13,10 +13,16 @@ public class HardLevel implements ActionListener
     int length = 4;
     private static JPanel bpanel = new JPanel();
     private static JPanel[] rpanels = new JPanel[6];
-    Rows row = new Rows();
     private static JButton buttons[] = new JButton[7];
     private static JLabel labels[] = new JLabel[8];
     private static ImageIcon icons[] = new ImageIcon[10];
+    private static JPanel r0 = new JPanel();
+    private static JPanel r1 = new JPanel();
+    private static JPanel r2 = new JPanel();
+    private static JPanel r3 = new JPanel();
+    private static JPanel r4 = new JPanel();
+    private static JPanel r5 = new JPanel();
+
     public HardLevel()
     {
         
@@ -35,11 +41,12 @@ public class HardLevel implements ActionListener
             j = j + 50;
 
         }
-        for(int i=0,j=0; i<=6;i++)
-        {
-            rpanels[i] =rows.createrow();
-        }
-
+        rpanels[0] = r0;
+        rpanels[1] = r1;
+        rpanels[2] = r2;
+        rpanels[3] = r3;
+        rpanels[4] = r4;
+        rpanels[5] = r5;
 
         for (int j=0,p=0;j<=rows;j++)
         {
@@ -50,7 +57,6 @@ public class HardLevel implements ActionListener
             p = p-50;
         }
 
-        
         frame.setSize(465, 390);
         frame.setLayout(null);
         frame.setResizable(false);

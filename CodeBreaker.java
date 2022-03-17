@@ -2,17 +2,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Menu implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
+public class CodeBreaker implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
 {
-    private  int length;
-    private  int rows;
+    private static  int length;
+    private static  int rows;
+    private static int arraylength;
     private static JFrame frame = new JFrame("Code Breaker");               // The exe is titled Code Breaker 
     private static JPanel panel = new JPanel();                             // A panel is made to showcase all components in it
     private static JLabel titles = new JLabel("Welcome to code Breaker");   // Welcomes the player to the game
     private static JButton easy = new JButton("Easy");                      // Button represents the level difficulty
     private static JButton medium = new JButton("Medium");                  // Button represents the level difficulty
     private static JButton hard = new JButton("Hard");                      // Button represents the level difficulty
-    public Menu()
+    public CodeBreaker()
     {
         
         easy.setBounds(0,20,285,100);                                       // Chose where the buttons should be
@@ -40,17 +41,29 @@ public class Menu implements ActionListener                          // This is 
 
         
     }
-    public int getlength(){
-        return this.length;
+    public static int getarraylength()
+    {
+        return arraylength;
     }
-    public void setlength(int a){
-        this.length = a;
+    public void setarraylength(int a)
+    {
+        arraylength = a;
     }
-    public int getrows(){
-        return this.rows;
+    public static int getlength()
+    {
+        return length;
     }
-    public void setrows(int a){
-        this.rows = a;
+    public void setlength(int a)
+    {
+        length = a;
+    }
+    public static int getrows()
+    {
+        return rows;
+    }
+    public void setrows(int a)
+    {
+        rows = a;
     }
 
     public void actionPerformed(ActionEvent e)                              // This function allows the program to react to input due to action listener
@@ -73,18 +86,28 @@ public class Menu implements ActionListener                          // This is 
 
     public void easy()
     {
-           new Level();
+            this.setarraylength(3);
+            this.setlength(3);
+            this.setrows(4);
+            new Level();
+            frame.setVisible(false);
     }
 
     public void medium()
     {    
-            new MediumLevel();
+            this.setarraylength(4);
+            this.setlength(4);
+            this.setrows(6);
+            new Level();
+            frame.setVisible(false);
     }
 
     public void hard()
     {   
-        this.setlength(8);
+        this.setarraylength(6);
+        this.setlength(6);
         this.setrows(6);
-        new HardLevel();
+        new Level();
+        frame.setVisible(false);
     }
 }

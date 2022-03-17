@@ -10,6 +10,9 @@ public class Win
                     {
                         System.out.println("You won");
                     }
+                    else{
+                        System.out.println("You wrong");
+                    }
                 }
             }
         }
