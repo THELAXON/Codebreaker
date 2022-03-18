@@ -10,7 +10,8 @@ public class Level implements ActionListener
     private static int length = CodeBreaker.getlength();
     private static int rows = CodeBreaker.getrows();
     private static int arraylength = CodeBreaker.getarraylength();
-    //private static int[] computerchoice = Codemaker.getcodemake();
+    //private static boolean win = Codemaker.win();
+    private static int[] computerchoice = Codemaker.getcodemake();
     private JFrame frame = new JFrame("Code Breaker");                  // Naming the frame
     private static ImageIcon icons[] = new ImageIcon[10];               // Array to store image icons given
     private static JButton buttons[] = new JButton[7];                  // Button array to keep buttons seperately
@@ -56,7 +57,6 @@ public class Level implements ActionListener
         cpanel.setLayout(new GridLayout(rows*2,length/2,0,0));
         cpanel.setBounds(350,20,130,450);
         cpanel.setBackground(new Color(0x996600));
-
         bpanel.setLayout(new GridLayout(1,7,0,0));
         bpanel.setBounds(60,510,350,50);
         bpanel.setBackground(new Color(0x996600));
@@ -93,6 +93,12 @@ public class Level implements ActionListener
         }
                 if(j==arraylength)
                 {
+                    boolean win = Codemaker.win();
+                    if(win == true)
+                    {
+                        frame.setVisible(false);
+                        new Winners();
+                    }
                     //create instance of win class here
                     for(int y=0;y<arraylength;y++){
                         playerchoice[y] = 0;

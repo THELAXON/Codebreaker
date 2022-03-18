@@ -10,7 +10,7 @@ public class CodeBreaker implements ActionListener                          // T
     private static int arraylength;
     private static JButton[] buttons = new JButton[3];
     private static String[] names = {"Easy", "Medium", "Hard"};
-    private static JFrame frame = new JFrame("Code Breaker: Choose Level");             // The exe is titled Code Breaker 
+    private static JFrame frame = new JFrame("Code Breaker: Choose Level");  // The exe is titled Code Breaker 
     private static JPanel bpanel = new JPanel();                             // A panel is made to showcase all components in it
     public CodeBreaker()
     {
@@ -44,8 +44,8 @@ public class CodeBreaker implements ActionListener                          // T
     } 
     public void easy()
     {
-            this.setarraylength(3);
-            this.setlength(3);
+            this.setarraylength(2);
+            this.setlength(2);
             this.setrows(6);
             new Level();
             frame.setVisible(false);
