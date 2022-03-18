@@ -10,8 +10,8 @@ public class Level implements ActionListener
     private static int length = CodeBreaker.getlength();
     private static int rows = CodeBreaker.getrows();
     private static int arraylength = CodeBreaker.getarraylength();
-    private static int[] computerchoice = Codemaker.getcodemake();
-    private JFrame frame = new JFrame("Code Breaker");          // Naming the frame
+    //private static int[] computerchoice = Codemaker.getcodemake();
+    private JFrame frame = new JFrame("Code Breaker");                  // Naming the frame
     private static ImageIcon icons[] = new ImageIcon[10];               // Array to store image icons given
     private static JButton buttons[] = new JButton[7];                  // Button array to keep buttons seperately
     private static JLabel labels[] = new JLabel[42];                    // JLabel size will change to adjust the rows and length
@@ -91,13 +91,18 @@ public class Level implements ActionListener
                 }                                        
             }
         }
-            if(playerchoice[arraylength] != 0)
-            {
+                if(j==4)
+                {
+                    //create instance of win class here
+                    for(int y=0;y<arraylength;y++){
+                        playerchoice[y] = 0;
+                    }
+                    j=0;
+                }
                 playerchoice[j]=k;
                 j++;
-            }
                 System.out.println(Arrays.toString(playerchoice));
-    }
+}
 
     public static int getarraylength() {
         return arraylength;
@@ -105,21 +110,5 @@ public class Level implements ActionListener
     public static int[] getplayerchoice() {
         return playerchoice;
     }
-    public void Win()
-    {
-        for(int i=0;i<Level.getplayerchoice().length;i++)
-            {
-                for(int j=0;j<computerchoice.length;j++)
-                {
-                    if(Level.getplayerchoice()[i] == computerchoice[j])
-                    {
-                        System.out.println("You won");
-                    }
-                    else{
-                        System.out.println("You wrong");
-                    }
-                }
-            }
-        }
 }
  

@@ -41,6 +41,52 @@ public class CodeBreaker implements ActionListener                          // T
 
         
     }
+
+    public void actionPerformed(ActionEvent e)                              // This function allows the program to react to input due to action listener
+    {
+        if(e.getSource()== easy)                                            // An if statement is used to compare what button was clicked
+        {
+            easy();                                                         // Goes to the function directed by the if statement
+        }
+        if(e.getSource()== medium)                                          // An if statement is used to compare what button was clicked
+        {
+            medium();                                                       // Goes to the function directed by the if statement
+        }
+        if(e.getSource()== hard)                                            // An if statement is used to compare what button was clicked
+        {
+            hard();                                                         // Goes to the function directed by the if statement
+        }
+        
+        
+    } 
+
+    public void easy()
+    {
+            this.setarraylength(3);
+            this.setlength(3);
+            this.setrows(6);
+            new Level();
+            frame.setVisible(false);
+    }
+
+    public void medium()
+    {    
+            this.setarraylength(4);
+            this.setlength(4);
+            this.setrows(6);
+            new Level();
+            frame.setVisible(false);
+    }
+
+    public void hard()
+    {   
+        this.setarraylength(6);
+        this.setlength(6);
+        this.setrows(6);
+        new Level();
+        frame.setVisible(false);
+    }
+
     public static int getarraylength()
     {
         return arraylength;
@@ -66,48 +112,4 @@ public class CodeBreaker implements ActionListener                          // T
         rows = a;
     }
 
-    public void actionPerformed(ActionEvent e)                              // This function allows the program to react to input due to action listener
-    {
-        if(e.getSource()== easy)                                            // An if statement is used to compare what button was clicked
-        {
-            easy();                                                         // Goes to the function directed by the if statement
-        }
-        if(e.getSource()== medium)                                          // An if statement is used to compare what button was clicked
-        {
-            medium();                                                       // Goes to the function directed by the if statement
-        }
-        if(e.getSource()== hard)                                            // An if statement is used to compare what button was clicked
-        {
-            hard();                                                         // Goes to the function directed by the if statement
-        }
-        
-        
-    } 
-
-    public void easy()
-    {
-            this.setarraylength(3);
-            this.setlength(3);
-            this.setrows(4);
-            new Level();
-            frame.setVisible(false);
-    }
-
-    public void medium()
-    {    
-            this.setarraylength(4);
-            this.setlength(4);
-            this.setrows(6);
-            new Level();
-            frame.setVisible(false);
-    }
-
-    public void hard()
-    {   
-        this.setarraylength(6);
-        this.setlength(6);
-        this.setrows(6);
-        new Level();
-        frame.setVisible(false);
-    }
 }

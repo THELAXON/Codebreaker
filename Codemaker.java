@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Codemaker
 {
-    private static int length = Level.getarraylength();
+    private static int length = CodeBreaker.getarraylength();
     static int[] codemake = new int[4];
     
     public void generate()
