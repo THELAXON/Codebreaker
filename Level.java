@@ -91,7 +91,7 @@ public class Level implements ActionListener
                 }                                        
             }
         }
-                if(j==4)
+                if(j==arraylength)
                 {
                     //create instance of win class here
                     for(int y=0;y<arraylength;y++){
