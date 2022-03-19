@@ -20,7 +20,7 @@ public class Level implements ActionListener
     private static JPanel gpanel = new JPanel();                        // Row panel to hold the empty icons
     private static JPanel cpanel = new JPanel();                        // Checking panel holds empty icons
     private static int[] pc = new int[arraylength];                     // This is the player choices which will keep resetting for every row
-
+    int p=0,k=0,j=0,g=0;
     public Level()
     {
         new Codemaker();
@@ -71,11 +71,40 @@ public class Level implements ActionListener
         frame.setVisible(true);
         System.out.println("This is the code"+Arrays.toString(computerchoice));
     }
-    int p=0,k=0,j=0,g=0;
+    public void checker(){
+        if(j==arraylength)
+        {
+            if(Arrays.equals(computerchoice, pc)){
+                for(int i=0;i<arraylength;i++)
+                {
+                    clabels[g].setIcon(icons[8]);
+                    g++;
+                }
+                new Winners();
+            }
+            else{
+                for(int i=0;i<arraylength;i++)
+                {
+                    if(computerchoice[i]==pc[i]){
+                        clabels[g].setIcon(icons[8]);
+                        g++;
+                    }
+                    if(computerchoice[i]!=pc[i]){
+                        clabels[g].setIcon(icons[7]);
+                        g++;
+                    }
+                }
+            }
+            for(int y=0;y<arraylength;y++)
+            {
+                pc[y] = 0;
+            }
+                j=0;
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        //System.out.println("This is the code"+Arrays.toString(computerchoice));
         for(int i=0;i<=6;i++)
         {
             if(e.getSource()== buttons[i])                                         
@@ -88,69 +117,10 @@ public class Level implements ActionListener
                 }                                        
             }
         }
-        if(j==arraylength)
-        {
-            if(checker() == true)
-            {
-                for(int i=0;i<arraylength;i++)
-                {
-                    clabels[g].setIcon(icons[8]);
-                    g++;
-                }
-                new Winners();
-            }
-            else if(checker() == false)
-            {
-            //g = g+arraylength;
-                for(int i=0;i<pc.length;i++)
-                {
-                    for(int j=0;j<computerchoice.length;j++)
-                    {
-                        if(pc[i] == computerchoice[j])
-                        {
-                            clabels[g].setIcon(icons[9]);
-                        }
-                    }
-                }
-                //g = g+arraylength;
-
-            }
-            g = g+arraylength;
-            for(int y=0;y<arraylength;y++)
-            {
-                pc[y] = 0;
-            }
-                j=0;
-        }
             pc[j]=k;
             j++;
-                System.out.println(Arrays.toString(pc));
-    }
-    public static int getarraylength() 
-    {
-        return arraylength;
-    }
-    public static int[] getpc() 
-    {
-        return pc;
-    }
-
-    public boolean checker(){
-        if(Arrays.equals(computerchoice, pc))
-        {
-            for(int i=0;i<pc.length;i++)
-            {
-                for(int j=0;j<computerchoice.length;j++)
-                {
-                    if(pc[i] == computerchoice[j])
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-
+            checker();
+                System.out.println(Arrays.toString(pc));  
     }
 }
  
