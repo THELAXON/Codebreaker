@@ -9,11 +9,11 @@ public class Winners{
 
 
 
-        panel.setBounds(0,0,100,200);
-        win.setBounds(0,0,75,150);
+        panel.setBounds(0,0,200,100);
+        win.setBounds(0,0,200,100);
         frame.add(panel);
         panel.add(win);
-        frame.setSize(100,200);
+        frame.setSize(200,100);
         frame.setVisible(true);
 
     }

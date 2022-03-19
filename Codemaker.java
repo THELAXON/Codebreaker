@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Arrays; 
 
 public class Codemaker
 {
@@ -14,7 +13,6 @@ public class Codemaker
             int x = num.nextInt(6);
             codemake[i] = x;
         }
-        System.out.println(Arrays.toString(codemake));
     }
 
     public static int[] getcodemake() 
