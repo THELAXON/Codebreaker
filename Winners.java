@@ -14,6 +14,7 @@ public class Winners{
         frame.add(panel);
         panel.add(win);
         frame.setSize(100,200);
+        frame.setVisible(true);
 
     }
 }

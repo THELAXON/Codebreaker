@@ -4,7 +4,6 @@ import java.util.Arrays;
 public class Codemaker
 {
     private static int length = CodeBreaker.getarraylength();
-    //private static int[] playerlength = Level.getpc();
     private static int[] codemake = new int[length];
     
     public Codemaker()
@@ -22,24 +21,4 @@ public class Codemaker
     {
         return codemake;
     }
-    /*public static boolean win()
-    {
-        if(playerlength== codemake)
-        {
-            return true;
-        }
-        for(int i=0;i<playerlength.length;i++)
-          {
-                for(int j=0;j<codemake.length;j++)
-                {
-                    if(Level.getpc()[i] == Codemaker.getcodemake()[j])
-                    {
-                        System.out.println("You won");
-                        return true;
-                    }
-                }
-            }
-       return false;
-        
-    }*/
 }

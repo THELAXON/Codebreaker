@@ -10,7 +10,7 @@ public class Level implements ActionListener
     private static int length = CodeBreaker.getlength();                // Gets the length of guesses needed per row
     private static int rows = CodeBreaker.getrows();                    // Gets the rows of guess needed per row
     private static int arraylength = CodeBreaker.getarraylength();      // Decides what size the array should be
-    private static Codemaker hi = new Codemaker();
+    //private static Codemaker hi = new Codemaker();
     private static int[] computerchoice = Codemaker.getcodemake();                      // Uses the win class to decide if the player guesses correct
     //private static boolean win = Codemaker.win();
     private static JFrame frame = new JFrame("Code Breaker");                  // Naming the frame
@@ -25,6 +25,7 @@ public class Level implements ActionListener
     
     public Level()
     {
+        new Codemaker();
         for(int i=0; i <=9;i++)                                         // Adding images to the icon array
         {
             icons[i] = new ImageIcon(String.valueOf(i)+".png");         // Converts to string the number used to name file and stores it into array
@@ -72,6 +73,7 @@ public class Level implements ActionListener
         frame.getContentPane().setBackground(new Color(0x996600)); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        System.out.println("This is the code"+Arrays.toString(computerchoice));
     }
     int p=0,k=0,j=0;
     @Override
@@ -89,7 +91,7 @@ public class Level implements ActionListener
                     k = i;
                 }                                        
             }
-        }
+        }       //int p=0;
                 if(j==arraylength)
                 {
                     //System.out.println(Arrays.toString(computerchoice));
@@ -99,7 +101,10 @@ public class Level implements ActionListener
                         {
                             if(pc[i] == computerchoice[j])
                             {
-                                System.out.println("You won");
+                                clabels[i].setIcon(icons[8]);
+                                //frame.setVisible(false);
+                                //new Winners();
+                                //p++;
                             }
                         }
                     }
