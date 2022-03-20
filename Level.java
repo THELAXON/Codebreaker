@@ -10,7 +10,7 @@ public class Level implements ActionListener
     private static int length = CodeBreaker.getlength();                // Gets the length of guesses needed per row
     private static int rows = CodeBreaker.getrows();                    // Gets the rows of guess needed per row
     private static int arraylength = CodeBreaker.getarraylength();      // Decides what size the array should be
-    private static int[] computerchoice = Codemaker.getcodemake();      // Uses the codemaker class to get computer generated code to decide if the player guesses correct
+    private static int[] cc = Codemaker.getcodemake();                  // Uses the codemaker class to get computer generated code to decide if the player guesses correct
     private static JFrame frame = new JFrame("Code Breaker");           // Naming the frame
     private static ImageIcon[] icons = new ImageIcon[10];               // Array to store image icons given
     private static JButton[] buttons = new JButton[7];                  // Button array to keep buttons seperately
@@ -20,9 +20,11 @@ public class Level implements ActionListener
     private static JPanel gpanel = new JPanel();                        // Row panel to hold the empty icons
     private static JPanel cpanel = new JPanel();                        // Checking panel holds empty icons
     private static int[] pc = new int[arraylength];                     // This is the player choices which will keep resetting for every row
-    int p=0,k=0,j=0,g=0;
+    private static boolean[] checking = new boolean[arraylength];
+    int p=0,k=0,j=0,g=0,q=0,blackcounter=0,whitecounter=0,emptycounter=0;
     public Level()
     {
+        Arrays.fill(checking, Boolean.FALSE);
         new Codemaker();
         for(int i=0; i <=9;i++)                                         // Adding images to the icon array
         {
@@ -69,37 +71,59 @@ public class Level implements ActionListener
         frame.getContentPane().setBackground(new Color(0x996600)); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        System.out.println("This is the code"+Arrays.toString(computerchoice));
+        System.out.println("This is the code"+Arrays.toString(cc));
     }
-    public void checker(){
+    public void checkfull()
+    {
         if(j==arraylength)
-        {
-            if(Arrays.equals(computerchoice, pc)){
-                for(int i=0;i<arraylength;i++)
+        {   
+            if(Arrays.equals(cc, pc))
+            {
+                new Winners();
+            }
+            for(int i=0;i<arraylength;i++)
+            {
+                if(pc[i] == cc[i] && checking[i] == false)
                 {
+                    blackcounter++;
+                    checking[i] = true;
+                }
+            }
+            for(int i=0;i<arraylength;i++)
+            {
+                for(int j=0;j<arraylength;j++)
+                {
+                    if(pc[j]==cc[i] && checking[i]== false)
+                    {
+                        whitecounter++;
+                    }
+                }
+            }
+            System.out.println("Black counters:"+blackcounter);
+            System.out.println("White counters:"+whitecounter);
+                for(int j=0;j<blackcounter;j++){
                     clabels[g].setIcon(icons[8]);
                     g++;
                 }
-                new Winners();
-            }
-            else{
-                for(int i=0;i<arraylength;i++)
-                {
-                    if(computerchoice[i]==pc[i]){
-                        clabels[g].setIcon(icons[8]);
-                        g++;
-                    }
-                    if(computerchoice[i]!=pc[i]){
-                        clabels[g].setIcon(icons[7]);
-                        g++;
-                    }
+                for(int p=0;p<whitecounter;p++){
+                    clabels[g].setIcon(icons[9]);
+                    g++;
                 }
-            }
+                int total = whitecounter + blackcounter;
+                for(int q=0;q<arraylength-total;q++){
+                    clabels[g].setIcon(icons[7]);
+                    g++;
+                }
+            blackcounter = 0;
+            whitecounter = 0;
             for(int y=0;y<arraylength;y++)
             {
                 pc[y] = 0;
             }
                 j=0;
+                for(int i=0;i<arraylength;i++){
+                    checking[i] = false;
+                }
         }
     }
     @Override
@@ -119,9 +143,10 @@ public class Level implements ActionListener
         }
             pc[j]=k;
             j++;
-            checker();
-                System.out.println(Arrays.toString(pc));  
+            checkfull();
+            System.out.println(Arrays.toString(pc));  
     }
 }
+
  
 

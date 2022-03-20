@@ -10,7 +10,7 @@ public class Codemaker
         Random num = new Random();
         for(int i=0;i<=length-1;i++)
         {
-            int x = num.nextInt(6);
+            int x = num.nextInt(7);
             codemake[i] = x;
         }
     }
