@@ -20,11 +20,14 @@ public class Level implements ActionListener
     private static JPanel gpanel = new JPanel();                        // Row panel to hold the empty icons
     private static JPanel cpanel = new JPanel();                        // Checking panel holds empty icons
     private static int[] pc = new int[arraylength];                     // This is the player choices which will keep resetting for every row
-    private static boolean[] checking = new boolean[arraylength];
-    int p=0,k=0,j=0,g=0,q=0,blackcounter=0,whitecounter=0,emptycounter=0;
+    private static boolean[] checkingp = new boolean[arraylength];
+    private static boolean[] checkingc = new boolean[arraylength];
+    private static int p=0,k=0,j=0,g=0,q=0,blackcounter=0,whitecounter=0;
+    private static int score=0;
     public Level()
     {
-        Arrays.fill(checking, Boolean.FALSE);
+        Arrays.fill(checkingp, Boolean.FALSE);
+        Arrays.fill(checkingc, Boolean.FALSE);
         new Codemaker();
         for(int i=0; i <=9;i++)                                         // Adding images to the icon array
         {
@@ -52,7 +55,6 @@ public class Level implements ActionListener
             buttons[i].addActionListener(this);                         // Adds action listener to the button so program can react to various inputs
             bpanel.add(buttons[i]);                                     // Adds the button to the button panel
         }
-
         cpanel.setLayout(new GridLayout(rows*2,length/2,0,0));          // Using grid layout for checking panel for better space usage
         cpanel.setBounds(350,20,130,450);                               // Giving bounds for the panel so checks take place in that area of the frame
         cpanel.setBackground(new Color(0x996600));                      // Background colour has to match the other backgrounds in the frame for consistency
@@ -77,25 +79,29 @@ public class Level implements ActionListener
     {
         if(j==arraylength)
         {   
+            score++;
             if(Arrays.equals(cc, pc))
             {
                 new Winners();
             }
             for(int i=0;i<arraylength;i++)
             {
-                if(pc[i] == cc[i] && checking[i] == false)
+                if(pc[i] == cc[i] && checkingp[i] == false && checkingc[i] == false)
                 {
                     blackcounter++;
-                    checking[i] = true;
+                    checkingc[i] = true;
+                    checkingp[i] = true;
                 }
             }
             for(int i=0;i<arraylength;i++)
             {
                 for(int j=0;j<arraylength;j++)
-                {
-                    if(pc[j]==cc[i] && checking[i]== false)
+                {               //2
+                    if(pc[j]==cc[i] && checkingc[i]== false && checkingp[j]== false)
                     {
                         whitecounter++;
+                        checkingp[j] = true;
+                        checkingc[i] = true;
                     }
                 }
             }
@@ -121,14 +127,18 @@ public class Level implements ActionListener
                 pc[y] = 0;
             }
                 j=0;
-                for(int i=0;i<arraylength;i++){
-                    checking[i] = false;
-                }
+            Arrays.fill(checkingp, Boolean.FALSE);
+            Arrays.fill(checkingc, Boolean.FALSE);
+            
         }
     }
     @Override
     public void actionPerformed(ActionEvent e) 
     {
+        if(score == 6){
+            frame.setVisible(false);
+            
+        }
         for(int i=0;i<=6;i++)
         {
             if(e.getSource()== buttons[i])                                         
@@ -145,6 +155,9 @@ public class Level implements ActionListener
             j++;
             checkfull();
             System.out.println(Arrays.toString(pc));  
+    }
+    public static int getscore() {
+        return score;
     }
 }
 
