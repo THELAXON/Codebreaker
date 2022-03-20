@@ -10,7 +10,7 @@ public class CodeBreaker implements ActionListener                          // T
     private static int arraylength;                                         // Choosing the array size for what the player input is and how long the generated code should be
     private static JButton[] buttons = new JButton[3];                      // This is the main menu so there needs to be three buttons which are easy,medium and hard
     private static String[] names = {"Easy", "Medium", "Hard"};             // Given all three the string names to assign later
-    static JFrame frame = new JFrame("Code Breaker: Choose Level"); // The exe is titled Code Breaker 
+    static JFrame frame = new JFrame("Code Breaker: Choose Level");         // The exe is titled Code Breaker 
     private static JPanel bpanel = new JPanel();                            // A panel is made to showcase all components in it
     public CodeBreaker()
     {
