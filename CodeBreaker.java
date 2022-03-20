@@ -3,6 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridLayout;
 
+/**
+ * This is the main menu of the game where the player gets to choose the level they want to play at
+ */
+
 public class CodeBreaker implements ActionListener                          // This is the main page and action listener is implemented so it reacts to user input
 {
     private static int length;                                              // To decide how many inputs there should be per line

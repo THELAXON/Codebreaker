@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
+/**
+ * This is the main game frame where as the levels are chosen the game frame is adjusted accordingly
+ */
+
 public class Level implements ActionListener
 {   
     private static int length = CodeBreaker.getlength();                                // Gets the length of guesses needed per row

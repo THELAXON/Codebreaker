@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.Arrays;
 
+/**
+ * The player is directed to this class which holds a jframe representing what happens when the player doesn't guess right
+ */
+
 public class Losers{
     private JFrame frame = new JFrame("Code Breaker");                              // Creates a Jframe which is named codebreaker
     private JLabel win = new JLabel("Better luck next time!");                      // Displays that the player Lost
